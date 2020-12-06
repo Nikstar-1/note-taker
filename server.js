@@ -10,8 +10,9 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.static("public"))
+app.use(express.urlencoded({ extended: true }));
+app.use("/api", apiRoutes)
 app.use("/", htmlRoutes)
-app.use("/", apiRoutes)
 
 // Start the server
 app.listen(PORT, () => console.log("application running on port " + PORT));

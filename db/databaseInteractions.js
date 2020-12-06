@@ -1,13 +1,18 @@
 const util = require("util")
 const fs = require("fs")
 
+const asyncRead = util.promisify(fs.readFile)
+
+
 class DatabaseInteractions {
+    readDatabase() {
+        return asyncRead("db/db.json");
+    }
    readNotes(){
-       const asyncRead = util.promisify(fs.readFile)
-       const readDatabase = asyncRead("db/db.json");
-       console.log(readDatabase)
-       const formatNotes = [].concat(JSON.parse(readDatabase));
-       return formatNotes;
+    return this.readDatabase().then((dbNotes) => {
+       const  parsedJson = JSON.parse(dbNotes);
+        return [...parsedJson]; 
+    })
 
    }
 
@@ -16,5 +21,5 @@ class DatabaseInteractions {
 }
 
 
-module.exports = new DatabaseInteractions()
+module.exports = new DatabaseInteractions();
 

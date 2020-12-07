@@ -22,11 +22,18 @@ class DatabaseInteractions {
 
    addNote(note){
        //add the note to the db
-       return asyncWrite("db/db.json", JSON.stringify(addNote))
+       return asyncWrite("db/db.json", JSON.stringify(note))
+       
    }
 
-}
 
+}
+const newNote = (title, body) => {
+
+    let notes= []; //Declare an array
+    const note = JSON.parse(fs.readFileSync("db/db.json", 'utf8')); //read and parse file contents
+    notes.push(note); //Append new JSON to your array
+}
 
 module.exports = new DatabaseInteractions();
 

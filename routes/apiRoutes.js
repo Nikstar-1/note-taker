@@ -6,14 +6,14 @@ router.get("/notes", (req, res) => {
     Interactions.readNotes().then((dbNotes) => 
     res.json(dbNotes)).catch((error) => res.status(500).json(error))
 
-    
+
 });
+
 //POST request which adds a new note to the db.json file
-router.post("/api/notes", (req, res) => {
-    res.sendFile(path.join(__dirname, "./db/db.json"));
-   //add a note to db.json
-    
+router.post("/api/api/notes", (req, res) => {
+   Interactions.addNote(req.body).then((note) => res.json(note));
 });
+
 //DELETE request which deletes the note from the db.json using an id
 router.delete("/api/notes/:id", (req, res) => {
     readFileAsync (path.join(__dirname, "./db/db.json"), "UTF-8")
@@ -26,3 +26,4 @@ router.delete("/api/notes/:id", (req, res) => {
 
 
 module.exports = router; 
+

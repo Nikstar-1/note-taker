@@ -4,15 +4,16 @@ const Interactions = require("../db/databaseInteractions")
 //GET request response which returns all notes from the db.json file
 router.get("/notes", (req, res) => {
     Interactions.readNotes().then((dbNotes) => 
-    res.json(dbNotes)).catch((error) => res.status(500).json(error))
-
+   res.json(dbNotes)).catch((error) => res.status(500).json(error))
 
 });
 
 //POST request which adds a new note to the db.json file
-router.post("/api/api/notes", (req, res) => {
+router.post("/notes", (req, res) => {
    Interactions.addNote(req.body).then((note) => res.json(note));
+  
 });
+
 
 //DELETE request which deletes the note from the db.json using an id
 router.delete("/api/notes/:id", (req, res) => {

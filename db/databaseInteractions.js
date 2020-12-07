@@ -22,6 +22,7 @@ class DatabaseInteractions {
 
    addNote(note){
        //add the note to the db
+       return asyncWrite("db/db.json", JSON.stringify(addNote))
    }
 
 }

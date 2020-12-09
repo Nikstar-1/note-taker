@@ -5,6 +5,7 @@ const Interactions = require("../db/databaseInteractions")
 router.get("/notes", (req, res) => {
     Interactions.readNotes().then((dbNotes) => 
    res.json(dbNotes)).catch((error) => res.status(500).json(error))
+   
 
 });
 
@@ -22,7 +23,7 @@ router.delete("/api/notes/:id", (req, res) => {
         return res.json(JSON.parse(data));
     });
    //delete from db.json by identifying which note has a corresponding id from re.params
-    
+  
 });
 
  

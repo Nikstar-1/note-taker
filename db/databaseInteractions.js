@@ -30,6 +30,10 @@ class DatabaseInteractions {
     // getting all notes from the database, separating them into an array with the new note to be added and then writeing this new array to the database
     return this.readNotes().then((notesInDb) => [...notesInDb, noteToBeAdded]).then((updatedNotes) => this.writeToDatabase(updatedNotes)).then(() => noteToBeAdded)
    }
+
+   deleteNote(idOnNoteToDelete){
+        
+   }
 }
 
 module.exports = new DatabaseInteractions();

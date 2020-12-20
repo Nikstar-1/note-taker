@@ -17,17 +17,18 @@ class DatabaseInteractions {
    readNotes(){
     return this.readDatabase().then((dbNotes) => {
         let notesArray = [];
-       let parsedJson = notesArray.concat(JSON.parse(dbNotes));
+        let parsedJson = notesArray.concat(JSON.parse(dbNotes));
         return parsedJson; 
     })
    }
 
    addNote(note){
-
-        const {title, text} = note; 
-        const noteToBeAdded = {title, text, id: uuidv4()}; 
+    //deconstructing the note to that we can add a unique id to that notes object before adding to the db
+    const {title, text} = note; 
+    const noteToBeAdded = {title, text, id: uuidv4()}; 
           
-        return this.readNotes().then((notesInDb) => [...notesInDb, noteToBeAdded]).then((updatedNotes) => this.writeToDatabase(updatedNotes)).then(() => noteToBeAdded)
+    // getting all notes from the database, separating them into an array with the new note to be added and then writeing this new array to the database
+    return this.readNotes().then((notesInDb) => [...notesInDb, noteToBeAdded]).then((updatedNotes) => this.writeToDatabase(updatedNotes)).then(() => noteToBeAdded)
    }
 }
 

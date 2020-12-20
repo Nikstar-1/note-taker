@@ -31,6 +31,13 @@ Application should allow users to view previously saved notes.
 
 Application should allow users to delete previously saved notes.
 
+## Screenshots
+
+!["Start Page"](images/NoteTakerMain.png "Start page.")
+
+!["Start Page"](images/NoteTakerNotes.png "Start page.")
+
+
 ## Guidlines 
 
 *  Build the backend to an already created front-end and connect the two.

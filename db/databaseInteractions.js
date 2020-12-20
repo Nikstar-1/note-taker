@@ -26,13 +26,13 @@ class DatabaseInteractions {
     //deconstructing the note to that we can add a unique id to that notes object before adding to the db
     const {title, text} = note; 
     const noteToBeAdded = {title, text, id: uuidv4()}; 
-          
     // getting all notes from the database, separating them into an array with the new note to be added and then writeing this new array to the database
     return this.readNotes().then((notesInDb) => [...notesInDb, noteToBeAdded]).then((updatedNotes) => this.writeToDatabase(updatedNotes)).then(() => noteToBeAdded)
    }
 
    deleteNote(idOnNoteToDelete){
-        
+    //getting the notes from the db and filtering to remove the note with the id passed in from the params on the request to the server then rewriting to the db
+    return this.readNotes().then((notesInDb) => notesInDb.filter((notes) => notes.id !== idOnNoteToDelete)).then((updatedNotes) => this.writeToDatabase(updatedNotes));
    }
 }
 

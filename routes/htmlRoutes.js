@@ -14,5 +14,4 @@ router.get("/notes", (req, res) => {
     res.sendFile(notesFilePath)
 })
 
-
 module.exports = router; 

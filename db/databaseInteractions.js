@@ -1,5 +1,6 @@
 const util = require("util")
 const fs = require("fs")
+const { v4: uuidv4 } = require('uuid')
 
 const asyncRead = util.promisify(fs.readFile)
 const asyncWrite = util.promisify(fs.writeFile)
@@ -15,25 +16,19 @@ class DatabaseInteractions {
 
    readNotes(){
     return this.readDatabase().then((dbNotes) => {
-       const  parsedJson = JSON.parse(dbNotes);
-        return [...parsedJson]; 
+        let notesArray = [];
+       let parsedJson = notesArray.concat(JSON.parse(dbNotes));
+        return parsedJson; 
     })
    }
 
    addNote(note){
-       //add the note to the db
-       return asyncWrite("db/db.json", JSON.stringify(note))
-       
+
+        const {title, text} = note; 
+        const noteToBeAdded = {title, text, id: uuidv4()}; 
+          
+        return this.readNotes().then((notesInDb) => [...notesInDb, noteToBeAdded]).then((updatedNotes) => this.writeToDatabase(updatedNotes)).then(() => noteToBeAdded)
    }
-
-
-}
-const newNote = (title, body) => {
-
-    let notes= []; //Declare an array
-    const note = JSON.parse(fs.readFileSync("db/db.json", 'utf8')); //read and parse file contents
-    notes.push(note); //Append new JSON to your array
 }
 
 module.exports = new DatabaseInteractions();
-

@@ -17,7 +17,6 @@ router.post("/notes", (req, res) => {
 router.delete("/notes/:id", (req, res) => {
     var idOnNoteToDelete = req.params.id; 
     Interactions.deleteNote(idOnNoteToDelete).then({success: true});
-   
 });
 
 module.exports = router; 

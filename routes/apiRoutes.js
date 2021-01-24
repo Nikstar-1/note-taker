@@ -16,7 +16,7 @@ router.post("/notes", (req, res) => {
 //DELETE request which deletes the note from the db.json using an id
 router.delete("/notes/:id", (req, res) => {
     var idOnNoteToDelete = req.params.id; 
-    Interactions.deleteNote(idOnNoteToDelete).then({success: true});
+    Interactions.deleteNote(idOnNoteToDelete).then (() => res.json({success: true}));
 });
 
 module.exports = router; 

@@ -86,7 +86,7 @@ Node Packages:
 
 Express
 
-## Authors
+## Author
 
 Rekha Kumari
 

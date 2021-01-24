@@ -73,7 +73,7 @@ Taker app is live on Heroku for you to use as well.
 
 ## Deployed Link:
 
-https://quiet-atoll-71792.herokuapp.com/notes
+https://quiet-atoll-71792.herokuapp.com/
 
 
 ## Built With
